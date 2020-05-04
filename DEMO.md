@@ -18,6 +18,7 @@ The winner is the person who scores the most points or who reached an agreed upo
 ## Strategies / Questions
 
 What are the longest, least common words? 
+
 What is the complete set of words that can be made from a set of dice? 
 
 ## Problem
@@ -63,7 +64,12 @@ and create an in-memory DAWG, plus it takes .001 ms to lookup a word.
 
 ## Boggle
 
-Created a class which has a board represented as a 2x2 multi-dimensional array (matrix). 
+Created a class which has a board represented as a 4x4 multi-dimensional array (matrix). 
+
+Attempted to precompute a Trie/DAWG of all possible words on the board but this takes ~2mins per board which is not an
+acceptable wait time IMO.
+
 I precompute a map of letters to positions on the matrix as well as a map of positions to adjacent positions.
+
 From there, I created an `isWord` method which checks the dictionary for the word before recursively traversing the matrix using the starting positions
 along with the neighbor lookup.
