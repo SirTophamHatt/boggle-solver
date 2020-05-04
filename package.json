@@ -1,0 +1,30 @@
+{
+  "name": "boggle-solver",
+  "version": "1.0.0",
+  "description": "Boggle Solver",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirTophamHatt/boggle-solver.git"
+  },
+  "keywords": [
+    "boggle",
+    "solver",
+    "typescript"
+  ],
+  "author": "Matt Duggan <mjduggan24@gmail.com> (https://github.com/SirTophamHatt)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SirTophamHatt/boggle-solver/issues"
+  },
+  "homepage": "https://github.com/SirTophamHatt/boggle-solver#readme",
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "dawg-lookup": "^2.2.1",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
+  }
+}
