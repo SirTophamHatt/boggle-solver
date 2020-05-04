@@ -5,14 +5,14 @@ import { VINTAGE_BOOKSHELF_2019, Dice } from './Dice';
 import { Matrix } from './Matrix';
 import { shuffle } from './util/shuffle';
 
-var { Trie, PTrie } = require('dawg-lookup');
+const { Trie, PTrie } = require('dawg-lookup');
 
 export type Coordinate = [number, number];
 export type Board = Matrix<string>;
 export type LetterMap = { [letter: string]: Set<number> };
 export type NeighborMap = { [position: number]: Set<number> };
 
-var moves: Coordinate[] = [
+const moves: Coordinate[] = [
   [0, -1], // N
   [1, -1], // NE
   [1, 0], // E
@@ -48,49 +48,6 @@ export function score(words: Set<string>): number {
     score += points(word);
   }
   return score;
-}
-
-/** This is here for posterity! **/
-export function words(board: Board): any {
-  console.time('words');
-  var words = new Trie();
-  var visited: Matrix<boolean> = Array.from(new Array(board.length), (row, r) => {
-    return Array.from(new Array(board[r].length)).fill(false);
-  });
-
-  function traverse(board: Board, row: number, column: number, current: string = '') {
-    visited[row][column] = true;
-
-    current += board[row][column];
-
-    var isEnd = true;
-
-    moves.forEach((move: Coordinate) => {
-      let nextRow = row + move[0];
-      let nextColumn = column + move[1];
-      if (nextRow >= 0 && nextRow < 4
-        && nextColumn >= 0 && nextColumn < 4
-        && !visited[nextRow][nextColumn]) {
-        isEnd = false;
-        traverse(board, nextRow, nextColumn, current);
-      }
-    });
-
-    if (isEnd) {
-      words.insert(current);
-    }
-
-    visited[row][column] = false;
-  }
-
-  for (let row = 0; row < board.length; row++) {
-    for (let column = 0; column < board[row].length; column++) {
-      traverse(board, row, column);
-    }
-  }
-
-  console.timeEnd('words');
-  return words;
 }
 
 export class Boggle {
